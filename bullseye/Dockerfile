@@ -33,8 +33,11 @@ RUN set -x \
 
 FROM build_stage AS bullseye-base
 
-ENV SRCDS_FPSMAX=300 \
-	SRCDS_TICKRATE=128
+# Environment variables for the server app (can be reassigned)
+ENV SERVERNAME="An Unturned Server" \
+	SERVERMAP="PEI" \
+	SERVERPWD="password" \
+	OWNERSTEAMID=0
 
 # Switch to user
 USER ${USER}
