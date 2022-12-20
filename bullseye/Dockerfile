@@ -3,8 +3,6 @@
 ###########################################################
 FROM cm2network/steamcmd:root as build_stage
 
-# LABEL maintainer="walentinlamonos@gmail.com"
-
 ENV STEAMAPPID 1110390
 ENV STEAMAPP Unturned-Dedicated-Server
 ENV STEAMAPPDIR "${HOMEDIR}/${STEAMAPP}-dedicated"
@@ -19,7 +17,7 @@ RUN set -x \
 		lib32z1=1:1.2.11.dfsg-2+deb11u2 \
 	&& mkdir -p "${STEAMAPPDIR}" \
 	# Add entry script
-	&& wget --max-redirect=30 "${DLURL}/master/etc/entry.sh?token=GHSAT0AAAAAAB3VPKRVZU3XRPI7MCIFBMC6Y5AVBDQ" -O "${HOMEDIR}/entry.sh" \
+	&& wget --max-redirect=30 "${DLURL}/master/etc/entry.sh" -O "${HOMEDIR}/entry.sh" \
 	&& { \
 		echo '@ShutdownOnFailedCommand 1'; \
 		echo '@NoPromptForPassword 1'; \
